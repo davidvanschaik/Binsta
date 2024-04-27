@@ -6,7 +6,7 @@ use RedBeanPHP\R;
 
 class DataController
 {
-    public function createUser($username, $email, $password)
+    public static function createUser($username, $email, $password)
     {
         $user = [
             'username' => $username,
@@ -16,16 +16,16 @@ class DataController
         return R::store(R::dispense('users')->import($user));
     }
 
-    public function loginUser($username, $password)
+    public static function loginUser($username, $password)
     {
         $user = R::findOne('users', 'username = ?', [$username]);
-        if ($user && password_verify($password, $user->password)) {
-            return $user->id;
+        if ($user->username == $username && $password == $user->password) {
+            return $user;
         }
         return false;
     }
 
-    public function updateUser($id, $username, $email, $password)
+    public static function updateUser($id, $username, $email, $password)
     {
         $user = R::load('users', $id);
         $user->username = $username;
@@ -34,7 +34,7 @@ class DataController
         return R::store($user);
     }
 
-    public function createPost($title, $content, $user_id)
+    public static function createPost($title, $content, $user_id)
     {
         $post = [
             'title' => $title,

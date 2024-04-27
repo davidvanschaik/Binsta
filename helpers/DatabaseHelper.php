@@ -4,6 +4,7 @@ namespace Helpers;
 
 use RedBeanPHP\R;
 
+
 class DatabaseHelper
 {
     public static function connect(): void
@@ -18,17 +19,10 @@ class DatabaseHelper
 
         $host = 'localhost:3306';
         $connection = 'mysql';
-        $database = 'david';
+        $database = 'Binsta';
         $username = 'root';
         $password = '';
 
         R::setup("$connection:host=$host;dbname=$database", $username, $password);
-    }
-
-    public static function insertUser()
-    {
-        $user = [
-            ''
-        ];
     }
 }

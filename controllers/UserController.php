@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Helpers\ViewHelper;
+use Controller\DataController;
 
 class UserController
 {
@@ -24,6 +25,25 @@ class UserController
 
     public function loginPost()
     {
+        $user = DataController::loginUser($_POST['username'], $_POST['password']);
 
+        if ($user) {
+            $_SESSION['user_id'] = $user->id;
+            header('Location: /home');
+        } else {
+            header('Location: /login');
+        }
+    }
+
+    public function signUpPost()
+    {
+        $user = DataController::createUser($_POST['username'], $_POST['email'], $_POST['password']);
+
+        if ($user) {
+            $_SESSION['user_id'] = $user;
+            header('Location: /home');
+        } else {
+            header('Location: /signup');
+        }
     }
 }

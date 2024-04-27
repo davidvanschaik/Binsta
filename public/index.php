@@ -12,3 +12,4 @@ VerificationController::check();
 DatabaseHelper::connect();
 
 new Routes();
+
