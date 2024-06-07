@@ -1,6 +1,6 @@
 <?php
 
-namespace Routes;
+namespace routes;
 
 class Routes
 {
@@ -18,6 +18,10 @@ class Routes
                 'controller' => 'Controller\\UserController',
                 'method' => 'signUp',
             ],
+            '/seedUser' => [
+                'controller' => 'Seeder\\UserSeeder',
+                'method' => 'seedUser',
+                ]
         ],
         'POST' => [
             '/login' => [

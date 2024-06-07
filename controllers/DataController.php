@@ -18,8 +18,10 @@ class DataController
 
     public static function loginUser($username, $password)
     {
+        var_dump($username, $password);
+
         $user = R::findOne('users', 'username = ?', [$username]);
-        if ($user->username == $username && $password == $user->password) {
+        if ($user->username == $username && password_verify($password, $user->password)) {
             return $user;
         }
         return false;

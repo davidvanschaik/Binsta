@@ -10,6 +10,7 @@
   "require": {
     "twig/twig": "^3.0",
     "gabordemooij/redbean": "dev-master",
-    "fakerphp/faker": "^1.23"
+    "fakerphp/faker": "^1.23",
+    "vlucas/phpdotenv": "*"
   }
 }

@@ -2,9 +2,13 @@
 
 require '../vendor/autoload.php';
 
-use Helpers\DatabaseHelper;
 use Controller\VerificationController;
-use Routes\Routes;
+use Dotenv\Dotenv;
+use Helpers\DatabaseHelper;
+use routes\Routes;
+
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
 
 session_start();
 
@@ -12,4 +16,3 @@ VerificationController::check();
 DatabaseHelper::connect();
 
 new Routes();
-

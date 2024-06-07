@@ -6,7 +6,7 @@ use Faker\Factory;
 use RedBeanPHP\R;
 use Helpers\DatabaseHelper;
 
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 class UserSeeder
 {
@@ -14,7 +14,6 @@ class UserSeeder
     {
         $faker = Factory::create();
         $count = 0;
-        DatabaseHelper::connect();
 
         for ($i = 0; $i < 10; $i++) {
             $user = [

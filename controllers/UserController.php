@@ -25,13 +25,17 @@ class UserController
 
     public function loginPost()
     {
+
         $user = DataController::loginUser($_POST['username'], $_POST['password']);
+        $_SESSION['user_id'] = $user['id'];
 
         if ($user) {
-            $_SESSION['user_id'] = $user->id;
-            header('Location: /home');
+            $_SESSION['user_id'] = $user['id'];
+            echo 'Success';
+//            header('Location: /home');
         } else {
-            header('Location: /login');
+//            header('Location: /login');
+            echo 'Failed';
         }
     }
 
@@ -40,8 +44,7 @@ class UserController
         $user = DataController::createUser($_POST['username'], $_POST['email'], $_POST['password']);
 
         if ($user) {
-            $_SESSION['user_id'] = $user;
-            header('Location: /home');
+            header('Location: /login');
         } else {
             header('Location: /signup');
         }
